@@ -15,15 +15,12 @@ calculator.className = "calculator";
 input_box.id = "inputBox";
 numBtn.className = "nums";
 input.id = "result";
-h1.innerText = "Calculator"
+h1.innerText = "Calculator";
 h1.id = "title";
-h1.className = "text-center"
 
 //p tag
 p.innerText = "This is a calculator program that uses the DOM";
 p.id = "description";
-p.className = "text-center";
-
 //body append
 document.body.append(h1, p, container);
 container.append(calculator);
@@ -52,11 +49,11 @@ function buttons(valu) {
         });
         break;
       case valu === "←":
-         element.addEventListener('click', ()=>{
-            input.value = input.value.slice(0, -1)
-         })
-         element.value = ""
-         break
+        element.addEventListener("click", () => {
+          input.value = input.value.slice(0, -1);
+        });
+        element.value = "";
+        break;
     }
   }
   if (
@@ -88,25 +85,23 @@ function buttons(valu) {
   //Calculate values for result
   if (btnList === "=") {
     element.id = "equal";
-    element.value = ""
-    element.addEventListener("click",()=> {
-      try{
-         input.value = eval(input.value);
+    element.value = "";
+    element.addEventListener("click", () => {
+      try {
+        input.value = eval(input.value);
+      } catch (error) {
+        alert("Only numbers are allowed");
+        input.value = "";
       }
-      catch(error){
-         alert("Invalid input")
-         input.value = ""
-      }
-    })
+    });
   }
-//iinserting the entered value
+  //iinserting the entered value
   element.addEventListener("click", () => {
     input.value += element.value;
   });
 
   return element;
 }
-
 //button value pushing
 for (let i = 0; i < numList.length; i++) {
   let inp = buttons(numList[i]);
